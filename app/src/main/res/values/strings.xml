@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ComposeTemplate</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_row">RowAndColumnActivity</string>
+    <string name="title_activity_box">BoxActivity</string>
+</resources>
