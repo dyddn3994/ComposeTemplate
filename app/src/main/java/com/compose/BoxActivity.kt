@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -30,7 +31,7 @@ class BoxActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BoxContainer()
+                    BoxWithConstraintContainer()
                 }
             }
         }
@@ -62,7 +63,7 @@ fun BoxContainer() {
         modifier = Modifier
             .background(Color.White)
             .fillMaxSize(),
-        contentAlignment = Alignment.TopStart,
+        contentAlignment = Alignment.Center,
 //        propagateMinConstraints = true
     ) {
         DummyBox2(modifier = Modifier.size(200.dp), color = Color.Green)
@@ -80,27 +81,27 @@ fun BoxWithConstraintContainer() {
         modifier = Modifier
             .background(Color.White)
             .fillMaxSize(),
-        contentAlignment = Alignment.Center,
-//        propagateMinConstraints = true
+        contentAlignment = Alignment.Center
     ) {
-        if (this.minHeight > 400.dp) {
-            DummyBox2(modifier = Modifier.size(200.dp), color = Color.Green)
-        }
-        else {
-            DummyBox2(modifier = Modifier.size(200.dp), color = Color.Yellow)
-        }
-        Text(text = "minHeight: ${this.minHeight}")
-
-//        Column() {
-//            BoxWithConstraintItem(modifier = Modifier
-//                .size(200.dp)
-//                .background(Color.Yellow)
-//            )
-//            BoxWithConstraintItem(modifier = Modifier
-//                .size(300.dp)
-//                .background(Color.Green)
-//            )
+        // 화면이 회전되는 등 Box 크기 변화에 따라 조건문 실행
+//        if (this.minHeight > 400.dp) {
+//            DummyBox2(modifier = Modifier.size(200.dp), color = Color.Green)
 //        }
+//        else {
+//            DummyBox2(modifier = Modifier.size(200.dp), color = Color.Yellow)
+//        }
+//        Text(text = "minHeight: ${this.minHeight}")
+
+        Column() {
+            BoxWithConstraintItem(modifier = Modifier
+                .size(200.dp)
+                .background(Color.Yellow)
+            )
+            BoxWithConstraintItem(modifier = Modifier
+                .size(300.dp)
+                .background(Color.Green)
+            )
+        }
     }
 }
 
@@ -108,8 +109,7 @@ fun BoxWithConstraintContainer() {
 fun BoxWithConstraintItem(modifier: Modifier = Modifier) {
     BoxWithConstraints(
         modifier = modifier,
-        contentAlignment = Alignment.Center,
-        propagateMinConstraints = false
+        contentAlignment = Alignment.Center
     ) {
         if (this.minWidth > 200.dp) {
             Text(text = "이것은 큰 상자이다")
