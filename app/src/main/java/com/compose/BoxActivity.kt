@@ -5,10 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,7 +30,7 @@ class BoxActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BoxComposable()
+                    BoxContainer()
                 }
             }
         }
@@ -55,7 +57,7 @@ class BoxActivity : ComponentActivity() {
 // 박스 안에 있는 제일 작은 크기의 뷰를 컨테이너 박스의 크기만큼 constarint를 건다(꽉 채움)
 
 @Composable
-fun BoxComposable() {
+fun BoxContainer() {
     Box(
         modifier = Modifier
             .background(Color.White)
@@ -68,6 +70,57 @@ fun BoxComposable() {
         DummyBox2(color = Color.Blue)
     }
 }
+
+// BoxWithConstraints
+// 조건에 따라 다른 Box를 출력할 수 있음
+
+@Composable
+fun BoxWithConstraintContainer() {
+    BoxWithConstraints(
+        modifier = Modifier
+            .background(Color.White)
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center,
+//        propagateMinConstraints = true
+    ) {
+        if (this.minHeight > 400.dp) {
+            DummyBox2(modifier = Modifier.size(200.dp), color = Color.Green)
+        }
+        else {
+            DummyBox2(modifier = Modifier.size(200.dp), color = Color.Yellow)
+        }
+        Text(text = "minHeight: ${this.minHeight}")
+
+//        Column() {
+//            BoxWithConstraintItem(modifier = Modifier
+//                .size(200.dp)
+//                .background(Color.Yellow)
+//            )
+//            BoxWithConstraintItem(modifier = Modifier
+//                .size(300.dp)
+//                .background(Color.Green)
+//            )
+//        }
+    }
+}
+
+@Composable
+fun BoxWithConstraintItem(modifier: Modifier = Modifier) {
+    BoxWithConstraints(
+        modifier = modifier,
+        contentAlignment = Alignment.Center,
+        propagateMinConstraints = false
+    ) {
+        if (this.minWidth > 200.dp) {
+            Text(text = "이것은 큰 상자이다")
+        }
+        else {
+            Text(text = "이것은 작은 상자이다")
+        }
+
+    }
+}
+
 
 @Composable
 fun DummyBox2(modifier: Modifier = Modifier, color: Color? = null) {
@@ -88,6 +141,7 @@ fun DummyBox2(modifier: Modifier = Modifier, color: Color? = null) {
 @Composable
 fun GreetingPreview2() {
     ComposeTemplateTheme {
-        BoxComposable()
+//        BoxContainer()
+        BoxWithConstraintContainer()
     }
 }
