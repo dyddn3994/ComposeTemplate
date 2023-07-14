@@ -30,6 +30,7 @@ class MainActivity : ComponentActivity() {
                         moveActivityBtn({startActivity(Intent(context, BoxActivity::class.java))}, "Box")
                         moveActivityBtn({startActivity(Intent(context, TextActivity::class.java))}, "Text")
                         moveActivityBtn({startActivity(Intent(context, ShapeActivity::class.java))}, "Shape")
+                        moveActivityBtn({startActivity(Intent(context, ButtonActivity::class.java))}, "Button")
                     }
                 }
             }
