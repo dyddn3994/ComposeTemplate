@@ -31,8 +31,8 @@ class RowAndColumn : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RowComposable()
-                    ColumnComposable()
+                    RowContainer()
+                    ColumnContainer()
                 }
             }
         }
@@ -54,12 +54,12 @@ class RowAndColumn : ComponentActivity() {
 // LinearLayout에서 gravity와 같음
 // Alignment.Top(Start): 컨테이너 위(왼쪽)에 두기
 // Alignment.Bottom(End): 컨테이너 아래(오른쪽)에 두기
-// Alignment.CenterVertically: 컨테이너의 수직방향으로 중앙에 두기
+// Alignment.CenterVertically(CenterHorizontally): 컨테이너의 수직방향으로 중앙에 두기
 
 // column과 row에 따라 거꾸로 설정하면 됨
 
 @Composable
-fun RowComposable() {
+fun RowContainer() {
     Row(
         modifier = Modifier
             .background(Color.White)
@@ -74,13 +74,13 @@ fun RowComposable() {
 }
 
 @Composable
-fun ColumnComposable() {
+fun ColumnContainer() {
     Column(
         modifier = Modifier
             .background(Color.White)
             .fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.End
     ) {
         DummyBox()
         DummyBox()
@@ -103,7 +103,7 @@ fun DummyBox(modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     ComposeTemplateTheme {
-//        RowComposable()
-        ColumnComposable()
+//        RowContainer()
+        ColumnContainer()
     }
 }

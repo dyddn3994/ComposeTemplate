@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.compose.ui.theme.ComposeTemplateTheme
@@ -25,25 +26,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     Column() {
-                        Button(onClick = {
-                            startActivity(Intent(context, TestActivity::class.java))
-                        }) {
-                            Text("테스트 화면 이동")
-                        }
-                        Button (onClick = {
-                            startActivity(Intent(context, RowAndColumn::class.java))
-                        }) {
-                            Text("Row & Column")
-                        }
-                        Button (onClick = {
-                            startActivity(Intent(context, BoxActivity::class.java))
-                        }) {
-                            Text("Box")
-                        }
+                        moveActivityBtn({startActivity(Intent(context, RowAndColumn::class.java))}, "Row & Column")
+                        moveActivityBtn({startActivity(Intent(context, BoxActivity::class.java))}, "Box")
                     }
                 }
             }
         }
+    }
+}
+
+@Composable
+fun moveActivityBtn(buttonClick: () -> Unit, text: String) {
+    Button (onClick = buttonClick) {
+        Text(text)
     }
 }
 
