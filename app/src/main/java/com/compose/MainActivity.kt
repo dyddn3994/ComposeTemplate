@@ -29,6 +29,7 @@ class MainActivity : ComponentActivity() {
                         moveActivityBtn({startActivity(Intent(context, RowAndColumn::class.java))}, "Row & Column")
                         moveActivityBtn({startActivity(Intent(context, BoxActivity::class.java))}, "Box")
                         moveActivityBtn({startActivity(Intent(context, TextActivity::class.java))}, "Text")
+                        moveActivityBtn({startActivity(Intent(context, ShapeActivity::class.java))}, "Shape")
                     }
                 }
             }

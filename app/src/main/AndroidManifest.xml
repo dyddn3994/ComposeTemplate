@@ -13,6 +13,11 @@
         android:theme="@style/Theme.ComposeTemplate"
         tools:targetApi="31">
         <activity
+            android:name=".ShapeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_shape"
+            android:theme="@style/Theme.ComposeTemplate" />
+        <activity
             android:name=".TextActivity"
             android:exported="false"
             android:label="@string/title_activity_text"
