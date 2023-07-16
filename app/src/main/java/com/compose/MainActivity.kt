@@ -32,6 +32,7 @@ class MainActivity : ComponentActivity() {
                         moveActivityBtn({startActivity(Intent(context, ShapeActivity::class.java))}, "Shape")
                         moveActivityBtn({startActivity(Intent(context, ButtonActivity::class.java))}, "Button")
                         moveActivityBtn({startActivity(Intent(context, CheckboxActivity::class.java))}, "Checkbox")
+                        moveActivityBtn({startActivity(Intent(context, SnackbarActivity::class.java))}, "Snackbar")
                     }
                 }
             }

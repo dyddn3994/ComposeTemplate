@@ -13,6 +13,11 @@
         android:theme="@style/Theme.ComposeTemplate"
         tools:targetApi="31">
         <activity
+            android:name=".SnackbarActivity"
+            android:exported="false"
+            android:label="@string/title_activity_snackbar"
+            android:theme="@style/Theme.ComposeTemplate" />
+        <activity
             android:name=".CheckboxActivity"
             android:exported="false"
             android:label="@string/title_activity_checkbox"
