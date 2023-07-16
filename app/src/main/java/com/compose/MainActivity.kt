@@ -6,12 +6,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import com.compose.ui.theme.ComposeTemplateTheme
 
 private const val TAG = "MainActivity"
@@ -25,7 +28,9 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                 ) {
-                    Column() {
+                    Column(
+                        modifier = Modifier.padding(horizontal = 20.dp)
+                    ) {
                         moveActivityBtn({startActivity(Intent(context, RowAndColumn::class.java))}, "Row & Column")
                         moveActivityBtn({startActivity(Intent(context, BoxActivity::class.java))}, "Box")
                         moveActivityBtn({startActivity(Intent(context, TextActivity::class.java))}, "Text")
@@ -33,6 +38,7 @@ class MainActivity : ComponentActivity() {
                         moveActivityBtn({startActivity(Intent(context, ButtonActivity::class.java))}, "Button")
                         moveActivityBtn({startActivity(Intent(context, CheckboxActivity::class.java))}, "Checkbox")
                         moveActivityBtn({startActivity(Intent(context, SnackbarActivity::class.java))}, "Snackbar")
+                        moveActivityBtn({startActivity(Intent(context, TextFieldActivity::class.java))}, "TextField")
                     }
                 }
             }
@@ -42,7 +48,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun moveActivityBtn(buttonClick: () -> Unit, text: String) {
-    Button (onClick = buttonClick) {
+    Button (
+        onClick = buttonClick,
+        modifier = Modifier
+            .fillMaxWidth(),
+
+    ) {
         Text(text)
     }
 }
