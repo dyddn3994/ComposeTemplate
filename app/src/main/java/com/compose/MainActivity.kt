@@ -29,16 +29,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     Column(
-                        modifier = Modifier.padding(horizontal = 20.dp)
+                        modifier = Modifier.padding(horizontal = 20.dp),
                     ) {
-                        moveActivityBtn({startActivity(Intent(context, RowAndColumn::class.java))}, "Row & Column")
-                        moveActivityBtn({startActivity(Intent(context, BoxActivity::class.java))}, "Box")
-                        moveActivityBtn({startActivity(Intent(context, TextActivity::class.java))}, "Text")
-                        moveActivityBtn({startActivity(Intent(context, ShapeActivity::class.java))}, "Shape")
-                        moveActivityBtn({startActivity(Intent(context, ButtonActivity::class.java))}, "Button")
-                        moveActivityBtn({startActivity(Intent(context, CheckboxActivity::class.java))}, "Checkbox")
-                        moveActivityBtn({startActivity(Intent(context, SnackbarActivity::class.java))}, "Snackbar")
-                        moveActivityBtn({startActivity(Intent(context, TextFieldActivity::class.java))}, "TextField")
+                        moveActivityBtn({ startActivity(Intent(context, RowAndColumn::class.java)) }, "Row & Column")
+                        moveActivityBtn({ startActivity(Intent(context, BoxActivity::class.java)) }, "Box")
+                        moveActivityBtn({ startActivity(Intent(context, TextActivity::class.java)) }, "Text")
+                        moveActivityBtn({ startActivity(Intent(context, ShapeActivity::class.java)) }, "Shape")
+                        moveActivityBtn({ startActivity(Intent(context, ButtonActivity::class.java)) }, "Button")
+                        moveActivityBtn({ startActivity(Intent(context, CheckboxActivity::class.java)) }, "Checkbox")
+                        moveActivityBtn({ startActivity(Intent(context, SnackbarActivity::class.java)) }, "Snackbar")
                     }
                 }
             }
@@ -48,7 +47,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun moveActivityBtn(buttonClick: () -> Unit, text: String) {
-    Button (
+    Button(
         onClick = buttonClick,
         modifier = Modifier
             .fillMaxWidth(),
@@ -58,10 +57,10 @@ fun moveActivityBtn(buttonClick: () -> Unit, text: String) {
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
+// @Preview(showBackground = true)
+// @Composable
+// fun GreetingPreview() {
 //    ComposeTemplateTheme {
 //        Greeting("Android")
 //    }
-//}
+// }
